@@ -14,8 +14,7 @@
     description: Docker repo
     baseurl: https://download.docker.com/linux/ubuntu/dists/$(lsb_release -cs)/stable
     gpgcheck: no
-  tags:
-    - ubuntu
+  when: ansible_os_family == "Ubuntu"
 
 - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
   yum:
