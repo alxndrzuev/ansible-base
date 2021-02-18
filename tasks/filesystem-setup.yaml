@@ -1,0 +1,25 @@
+---
+- name: Create a volume group on top of /dev/vdb
+  community.general.lvg:
+    vg: vg.data
+    pvs: /dev/vdb
+    pesize: 32
+
+- name: Create a logical volume
+  community.general.lvol:
+    vg: vg.data
+    lv: data
+    size: 70%FREE
+    shrink: no
+
+- name: Create a xfs filesystem on /dev/vg.data/data
+  community.general.filesystem:
+    fstype: xfs
+    dev: /dev/vg.data/data
+
+- name: Mount data fs
+  ansible.posix.mount:
+    path: /data
+    src: /dev/vg.data/data
+    fstype: xfs
+    state: mounted

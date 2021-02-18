@@ -1,0 +1,8 @@
+---
+galaxy_info:
+  author: Zuev Alexander
+  description: Role for configure Centos 8 host
+  license: license
+  min_ansible_version: 2.5
+
+dependencies: []

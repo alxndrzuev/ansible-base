@@ -1,0 +1,8 @@
+---
+- name: Install docker
+  become: yes
+  include: docker-install.yaml
+
+- name: Setup filesystem
+  become: yes
+  include: filesystem-setup.yaml
