@@ -6,3 +6,5 @@
 - name: Setup filesystem
   become: yes
   include: filesystem-setup.yaml
+  tags:
+    - setup-filesystem

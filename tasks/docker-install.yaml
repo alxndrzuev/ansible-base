@@ -1,10 +1,20 @@
 ---
-- name: Add docker repository
+- name: Add docker centos repository
   yum_repository:
     name: docker
     description: Docker repo
     baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
     gpgcheck: no
+  tags:
+    - centos
+
+- name: Add docker ubuntu repository
+  yum_repository:
+    name: docker
+    description: Docker repo
+    baseurl: https://download.docker.com/linux/ubuntu/dists/$(lsb_release -cs)/stable
+    gpgcheck: no
+  when: ansible_os_family == "Ubuntu"
 
 - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
   yum:
